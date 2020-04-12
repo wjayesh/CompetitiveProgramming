@@ -35,7 +35,7 @@ class DiameterBTDay11
          right subtrees plus 1*/
         height.h = Math.max(lh.h, rh.h) + 1; 
   
-        return Math.max(lh.h + rh.h + 1, Math.max(ldiameter, rdiameter)); 
+        return Math.max(lh.h + rh.h, Math.max(ldiameter, rdiameter)); 
     } 
   
     /* A wrapper over diameter(Node root) */
