@@ -13,7 +13,7 @@ public class StringShiftDay14 {
                 shiftLeft(deque, command[1]);
                 break;
                 case 1:
-                shiftRight(deque, command[i]);
+                shiftRight(deque, command[1]);
                 break;
             }
         }
