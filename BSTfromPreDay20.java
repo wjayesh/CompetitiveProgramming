@@ -1,6 +1,12 @@
 import utils.TreeNode;
 
 public class BSTfromPreDay20 {
+    Index index = new Index();
+    public TreeNode bstFromPreorder(int[] preorder) {
+        return constructTreeUtil(preorder, index, preorder[0], 
+                    Integer.MIN_VALUE, Integer.MAX_VALUE, preorder.length);
+    }
+    
     TreeNode constructTreeUtil(int pre[], Index preIndex, int key, 
             int min, int max, int size) { 
   
@@ -31,18 +37,25 @@ public class BSTfromPreDay20 {
   
                 // All TreeNodes which are in range {key..max}  
                 // will go in right subtree, and first such 
-                // TreeNode will be root of right subtree. 
-                root.right = constructTreeUtil(pre, preIndex,  
+                // TreeNode will be root of right subtree.
+                if (preIndex.index < size) {
+                    root.right = constructTreeUtil(pre, preIndex,  
                              pre[preIndex.index], key, max, size); 
+                }
+                
             } 
         } 
   
         return root; 
-    } 
-    
+    }
 
+    public static void main(String[] args) {
+        BSTfromPreDay20 obj = new BSTfromPreDay20();
+        System.out.println(obj.bstFromPreorder(new int[]{4, 2}));
+    }
+    
 }
 
 class Index {
-    int index;
+int index = 0;
 }
