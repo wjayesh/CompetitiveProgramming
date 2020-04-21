@@ -1,33 +1,24 @@
 import utils.BinaryMatrix;
 
 public class LeftColumn1Day21 {
-    public int leftMostColumnWithOne(BinaryMatrix binaryMatrix) {
-        int n = binaryMatrix.dimensions().get(0);
-        int m = binaryMatrix.dimensions().get(1);
-        int minIndex = m;
-        for(int i = 0; i < n; i++) {
-            findOne(binaryMatrix, i, 0, m-1);
-            if(firstOccurence < minIndex) {
-                minIndex = firstOccurence;
-            }
-        }
-        return (minIndex != m)? minIndex: -1;
-    }
+    public int leftMostColumnWithOne(BinaryMatrix matrix) {
 
-    private int firstOccurence = Integer.MAX_VALUE;
-    private void findOne(BinaryMatrix binaryMatrix, int i, int start, int end) {
-        if(start == end || binaryMatrix.get(i, end) == 0) {
-            return;
-        }
-        int mid = (start + end)/2;
-        if(binaryMatrix.get(i, mid) == 0) {
-            findOne(binaryMatrix, i, mid, end);
-        } else {
-            if(mid < firstOccurence) {
-                firstOccurence = mid;
+        int row = matrix.dimensions().get(0);
+        int col = matrix.dimensions().get(1);
+        if (matrix == null || row == 0 || col == 0)
+            return -1;
+
+        int m = 0;
+        int n = col - 1;
+
+        while (m < row && n >= 0) {
+            if (matrix.get(m, n) == 1) {
+                n--;
+            } else {
+                m++;
             }
-            findOne(binaryMatrix, i, start, mid);
         }
+        return n != col - 1 ? n + 1 : -1;
     }
 
 }
