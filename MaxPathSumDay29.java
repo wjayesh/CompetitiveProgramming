@@ -1,27 +1,23 @@
 import utils.TreeNode;
 
 public class MaxPathSumDay29 {
+    int max = Integer.MIN_VALUE;
+    
     public int maxPathSum(TreeNode root) {
-        GlobalMax globalMax = new GlobalMax();
-        globalMax.val = Integer.MIN_VALUE;
-        maxSum(root, globalMax);
-        return globalMax.val;
+        helper(root);
+        return max;
     }
-
-    private int maxSum(TreeNode root, GlobalMax obj) {
-        if(root.left == null || root.right == null) {
-            return root.val;
-        }
-        int sum = 0;
-        int leftSum = maxSum(root.left, obj);
-        int rightSum = maxSum(root.right, obj);
-        sum = Math.max(leftSum + rightSum + root.val, root.val);   
-        sum = Math.max(sum, Math.max(leftSum, rightSum) + root.val);
-        obj.val = Math.max(obj.val, sum);
-        return sum;
+    
+    // helper returns the max branch 
+    // plus current node's value
+    int helper(TreeNode root) {
+        if (root == null) return 0;
+        
+        int left = Math.max(helper(root.left), 0);
+        int right = Math.max(helper(root.right), 0);
+        
+        max = Math.max(max, root.val + left + right);
+        
+        return root.val + Math.max(left, right);
     }
-
-}
-class GlobalMax {
-    int val;
 }
