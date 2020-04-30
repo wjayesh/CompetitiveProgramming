@@ -1,10 +1,13 @@
+import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Set;
 
 class FirstUnique {
     LinkedHashSet<Integer> set;
-
+    Set<Integer> all;
     public FirstUnique(int[] nums) {
         set = new LinkedHashSet<>();
+        all = new HashSet<>();
         for(int i = 0; i < nums.length; i++) {
             add(nums[i]);
         }
@@ -18,7 +21,7 @@ class FirstUnique {
     }
     
     public void add(int value) {
-        if(!set.contains(value)) {
+        if(all.add(value)) {
             set.add(value);
         } else {
             set.remove(value);
