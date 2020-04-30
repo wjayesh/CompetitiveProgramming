@@ -10,7 +10,7 @@ public class ValidStringBTree {
         if(index == arr.length) {
             return false;
         }
-        if(root.left == null && root.right == null) {
+        if(root.left == null && root.right == null && index == arr.length - 1 && root.val == arr[index]) {
             return true;
         }
         if(root.val != arr[index]) {
