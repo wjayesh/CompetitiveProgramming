@@ -1,6 +1,6 @@
 package May;
 
-import utils.TreeNode;
+import May.utils.TreeNode;
 
 public class CousinsBT7 {
     TreeNode xParent = null;
