@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 public class TownJudge10 {
     public int findJudge(int N, int[][] trust) {
+        if(trust.length == 0 && N == 1) {
+            return 1;
+        }
         HashMap<Integer, Integer> map = new HashMap<>();
         for(int i = 0; i < trust.length; i++) {
             map.put(trust[i][0], map.getOrDefault(trust[i][0], 0) - 1);
