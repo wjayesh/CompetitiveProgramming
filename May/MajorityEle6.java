@@ -1,3 +1,5 @@
+package May;
+
 public class MajorityEle6 {
     public int majorityElement(int[] nums) {
         int count = 0;

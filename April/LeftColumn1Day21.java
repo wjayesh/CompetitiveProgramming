@@ -1,4 +1,5 @@
-import utils.BinaryMatrix;
+package April;
+import April.utils.BinaryMatrix;
 
 public class LeftColumn1Day21 {
     public int leftMostColumnWithOne(BinaryMatrix matrix) {

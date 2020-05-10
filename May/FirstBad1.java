@@ -1,3 +1,5 @@
+package May;
+
 /* The isBadVersion API is defined in the parent class VersionControl.
       boolean isBadVersion(int version); */
 public class FirstBad1 {
@@ -9,6 +11,10 @@ public class FirstBad1 {
             else end = mid;            
         }        
         return start;
+    }
+
+    private boolean isBadVersion(int mid) {
+        return false;
     }
 
 }

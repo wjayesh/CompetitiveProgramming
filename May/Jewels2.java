@@ -1,3 +1,4 @@
+package May;
 
 public class Jewels2 {
     public int numJewelsInStones(String J, String S) {

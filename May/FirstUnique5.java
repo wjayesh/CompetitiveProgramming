@@ -1,3 +1,5 @@
+package May;
+
 public class FirstUnique5 {
     public int firstUniqChar(String s) {
         char letters[] = new char[128];

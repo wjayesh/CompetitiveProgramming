@@ -1,4 +1,4 @@
-
+package May;
 
 class RansomNote3 {
     public boolean canConstruct(String ransomNote, String magazine) {

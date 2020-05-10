@@ -1,4 +1,5 @@
-import utils.TreeNode;
+package April;
+import April.utils.TreeNode;
 
 public class ValidStringBTree {
     public boolean isValidSequence(TreeNode root, int[] arr) {
