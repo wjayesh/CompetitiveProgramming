@@ -25,7 +25,6 @@ public class LCContestApple {
             for(int i = 0; i < edges.length; i++) {
                 if(edges[i][0] == n) {
                     if(!noAppleBelow(edges[i][1], edges, hasApple)) {
-                        map.put(i, false);
                         return false;    
                     }
                 } 
