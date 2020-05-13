@@ -23,3 +23,11 @@ public class RemoveKDig13 {
         return idx == digits? "0": new String(stk, idx, digits - idx);
     }
 }
+
+
+/** 
+ * Use DP/Greedy when optimsation problems come up. The maximum, as smallest as possible etc.
+ * type problems -> Greedy first, if that doesn't work, then DP. 
+ * 
+ * Greedy is lucky case of DP 
+ */
