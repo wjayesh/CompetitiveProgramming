@@ -2,42 +2,24 @@ package May;
 
 public class LCCMaxDiffChangeInt {
     public int maxDiff(int num) {
-        int a = calcA(num);
-        int b = calcB(num);
-        return a - b;
-    }
-
-    private int calcB(int num) {
-        String n = String.valueOf(num);
-        int i = 1;
-        if(n.charAt(0) != '1') {
-            return Integer.valueOf(n.replace(n.charAt(0), '1'));
-        } else {
-            while(i < n.length() && n.charAt(i) == '0') {
-                i++;
+        char[] a = Integer.toString(num).toCharArray(), b = a.clone();
+        char x = a[0], y = 0;
+        for (int i = 0; i < a.length; ++i) {
+            if (a[i] == x) {
+                a[i] = '9';
+                b[i] = '1';
+            }else if (x == '1' && a[i] > '0' || x == '9' && a[i] < '9') {
+                if (y == 0) {
+                    y = a[i];
+                } 
+                if (y == a[i]) {
+                    if (x == '1')
+                        b[i] = '0';
+                    else
+                        a[i] = '9';
+                }
             }
-            String newNum;
-            if(i == n.length()) {
-                newNum = n;
-            } else {
-                newNum = n.replace(n.charAt(i), '0');
-            }
-            return Integer.valueOf(newNum);
         }
-    }
-
-    private int calcA(int num) {
-        String n = String.valueOf(num);
-        int i = 0;
-        while(i < n.length() && n.charAt(i) == '9') {
-            i++;
-        }
-        String newNum;
-        if(i == n.length()) {
-            newNum = n;
-        } else {
-            newNum = n.replace(n.charAt(i), '9');
-        }
-        return Integer.valueOf(newNum);
+        return Integer.parseInt(String.valueOf(a)) - Integer.parseInt(String.valueOf(b));
     }
 }
