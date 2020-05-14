@@ -2,57 +2,45 @@ package May;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 public class LCCSubarrayDiffK {
+    public int longestSubarray(int[] nums, int limit) {
+        Deque<Integer> maxDeque = new LinkedList<>();
+        Deque<Integer> minDeque = new LinkedList<>();
 
-    
-public int[] maxSlidingWindow(int[] a, int k) {		
-    if (a == null || k <= 0) {
-        return new int[0];
+        int res = 1;
+
+        int l = 0;
+
+        // find the longest subarray for every right pointer by shrinking left pointer
+        for (int r = 0; r < nums.length; ++r) {
+
+            // update maxDeque with new right pointer
+            while (!maxDeque.isEmpty() && maxDeque.peekLast() < nums[r]) {
+                maxDeque.removeLast();
+            }
+            maxDeque.addLast(nums[r]);
+
+            // update minDeque with new right pointer
+            while (!minDeque.isEmpty() && minDeque.peekLast() > nums[r]) {
+                minDeque.removeLast();
+            }
+            minDeque.addLast(nums[r]);
+
+            // shrink left pointer if exceed limit
+            while (maxDeque.peekFirst() - minDeque.peekFirst() > limit) {
+                if (maxDeque.peekFirst() == nums[l])
+                    maxDeque.pollFirst();
+                if (minDeque.peekFirst() == nums[l])
+                    minDeque.pollFirst();
+                ++l; // shrink it!
+            }
+
+            // update res
+            res = Math.max(res, r - l + 1);
+        }
+
+        return res;
     }
-    int n = a.length;
-    int[] r = new int[n-k+1];
-    int ri = 0;
-    // store index
-    Deque<Integer> q = new ArrayDeque<>();
-    for (int i = 0; i < a.length; i++) {
-        // remove numbers out of range k
-        while (!q.isEmpty() && q.peek() < i - k + 1) {
-            q.poll();
-        }
-        // remove smaller numbers in k range as they are useless
-        while (!q.isEmpty() && a[q.peekLast()] < a[i]) {
-            q.pollLast();
-        }
-        // q contains index... r contains content
-        q.offer(i);
-        if (i >= k - 1) {
-            r[ri++] = a[q.peek()];
-        }
-    }
-    return r;
-}
-
-
-
-    // public int longestSubarray(int[] nums, int limit) {
-    //     if(nums.length == 0) {
-    //         return 0;
-    //     }
-    //     int[] longest = new int[nums.length];
-    //     longest[0] = 1;
-    //     int max = nums[0], min = nums[0];
-    //     for(int i = 1; i < nums.length; i++) {
-    //         if(Math.abs(max - nums[i]) > limit || Math.abs(min - nums[i]) > limit) {
-    //             longest[i] = longest[i - 1];
-    //         } else {
-    //             longest[i] = longest[i - 1] + 1;
-    //             max = Math.max(max, nums[i]);
-    //             min = Math.min(min, nums[i]);
-    //         }
-    //     }
-    //     return longest[nums.length - 1];
-    // }
-
-
 }
