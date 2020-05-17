@@ -20,3 +20,7 @@ public class LCCConstrainedSubsequence {
         return res;
     }
 }
+
+/** 
+ * similar to sliding window max 239;just keep adding the max if >0"
+ */
