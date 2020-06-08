@@ -1,0 +1,14 @@
+public class ShuffleArray_E {
+  public int[] shuffle(int[] nums, int n) {
+        int arr[] = new int[nums.length];
+        int index = 0;
+        for(int i = 0; i < nums.length; i+=2) {
+            arr[i] = nums[index++];
+        }
+        index = n;
+        for(int i = 1; i < nums.length; i+=2) {
+            arr[i] = nums[index++];
+        }
+        return arr;
+    }
+}
