@@ -1,4 +1,4 @@
-class RunningSum {
+class RunningSum_E {
     public int[] runningSum(int[] nums) {
         int[] res = new int[nums.length];
         res[0] = nums[0];
