@@ -21,3 +21,15 @@ public class MakeMBouquets_M {
         return left;
     }
 }
+
+/** 
+This is a typical binary search on solution set (nvm, I just call it that).
+We know that more flowers would bloom and more bouquets can be made as days move on.
+Think about this:
+On day 1, i1 flowers open and we can make k1 bouquets.
+On day 2, i2 fowers open and we can make k2 bouquets where i2>=i1, k2>=k1
+...
+On the last day, all flowers open and we can make kn bouquets.
+
+See, they were actully in a nondecreasing order. Then you could simply apply binary search on it, that is: find a mid day → validate if we can make k bouquests on that exact date → move to left or right part based on the validation → you are good to go
+**/
