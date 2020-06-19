@@ -15,3 +15,4 @@ class H_IndexII_18 {
         return n - l;
     }
 }
+
