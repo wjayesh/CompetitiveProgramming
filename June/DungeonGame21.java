@@ -23,3 +23,11 @@ public class DungeonGame21 {
 		return minRequred[0][0] + 1;
     }
 }
+
+/**
+This is because, in order to compute HP[i][j], you will need to make sure of two things:
+
+your HP[i][j]+dungeon[i][j] should be >0
+your HP[i][j]+dungeon[i][j] should be large enough, so that it will be sufficient to cover the minimum requirement on HP for the next step, be it right or down (take whichever requires smaller HP).
+So you see, because of the second requirement, your calculation of HP[i][j] will depend on later steps that you could take. This is why you have to know these later steps ahead of time, thus calculating from the bottom right.
+**/
