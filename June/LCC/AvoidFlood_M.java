@@ -2,34 +2,26 @@ import java.util.*;
 
 class AvoidFlood_M {
     public int[] avoidFlood(int[] rains) {
-        HashMap<Integer, Integer> mapLakes = new HashMap<>();
-        Queue<Integer> q = new LinkedList<>();
-        int res[] = new int[rains.length];
-        for(int i = 0; i < rains.length; i++) {
-            res[i] = -1;
-        }
-        for(int i = 0; i < rains.length; i++) {
-            if(rains[i] == 0) {
-                q.add(i);
-                continue;
-            }
-            if(mapLakes.containsKey(rains[i])) {
-                if(q.size() == 0) {
-                    return new int[0];
-                }
-                int idx = q.poll();
-                if(idx < mapLakes.get(rains[i])) {
-                    return new int[0];
-                }
-                res[idx] = rains[i];
-                mapLakes.put(rains[i], i);
+        // the previous appeared idx of rains[i]
+        Map<Integer, Integer> map = new HashMap<>();
+        TreeSet<Integer> zeros = new TreeSet<>();
+        int[] res = new int[rains.length];
+        for (int i = 0; i < rains.length; i++) {
+            if (rains[i] == 0) {
+                zeros.add(i);
             } else {
-                mapLakes.put(rains[i], i);
+                if (map.containsKey(rains[i])) {
+                    // find the location of zero that can be used to empty rains[i]
+                    Integer next = zeros.ceiling(map.get(rains[i]));
+                    if (next == null) return new int[0];
+                    res[next] = rains[i];
+                    zeros.remove(next);
+                }
+                res[i] = -1;
+				map.put(rains[i], i);
             }
         }
-        while(q.size() > 0) {
-            res[q.poll()] = 1;
-        }
+        for (int i : zeros) res[i] = 1;
         return res;
     }
 }
