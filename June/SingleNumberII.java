@@ -38,3 +38,13 @@ So, effectively, any number that appears a first time will be in set "ones" so i
 Finally, once we are done iterating over the entire list, set "twos" would be empty and set "ones" will contain the only number that appears once.
 **/
 
+
+/**
+Let me describe it to see if I'm understanding it right:
+
+First time number appear -> save it in "ones"
+
+Second time -> clear "ones" but save it in "twos" for later check
+
+Third time -> try to save in "ones" but value saved in "twos" clear it.
+**/
