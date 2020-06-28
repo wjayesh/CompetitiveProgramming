@@ -1,4 +1,4 @@
-
+import java.util.io*;
 class PerfectSquares27 {
     
     public int numSquares(int n) {
