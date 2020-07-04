@@ -36,3 +36,8 @@ class Solution {
     }
 }
 
+/**
+1.Have a sub function nextDay() that finds the next day's cell states
+2.Iterate and store the cell states that occurred previously
+3.If there's no cycle, return. If there's a cycle, break the loop and rerun N%cycle times to find the target cell states
+**/
