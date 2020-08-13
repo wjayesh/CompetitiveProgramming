@@ -22,3 +22,5 @@ class Solution {
 
 // bubble sort. the question wanted the triangle above the diagonal to have all zeroes. 
 // so we count all trailing zeroes and sort them in a decreasing order.
+
+// done greedily
